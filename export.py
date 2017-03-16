@@ -1,6 +1,8 @@
 import ConfigParser
 import logging
+import logging.config
 import os
+import json
 import unicodecsv as csv
 import datetime
 
@@ -10,7 +12,9 @@ OUTPUT_DIR = "output"
 base_dir = os.path.dirname(os.path.abspath(__file__))   # so nothing is relative paths
 
 # set up logger
-logging.basicConfig(level=logging.INFO)
+with open(os.path.join(base_dir,'logging.json'), 'r') as f:
+    logging_config = json.load(f)
+logging.config.dictConfig(logging_config)
 log = logging.getLogger(__name__)
 log.info("----------------------------------------------------------------------------")
 
