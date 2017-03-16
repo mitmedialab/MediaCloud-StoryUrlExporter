@@ -10,7 +10,7 @@ OUTPUT_DIR = "output"
 base_dir = os.path.dirname(os.path.abspath(__file__))   # so nothing is relative paths
 
 # set up logger
-logging.basicConfig(level=logging.DEBUG)
+logging.basicConfig(level=logging.INFO)
 log = logging.getLogger(__name__)
 log.info("----------------------------------------------------------------------------")
 
@@ -45,7 +45,9 @@ log.info("  At {} per fetch that'll be {} pages".format(stories_per_fetch, page_
 # page through stories using last_processed_stories_id value
 last_processed_stories_id = 0
 more_stories = True
+page = 0
 while more_stories:
+    log.info("Page {} of {}".format(page, page_count))
     stories = mc.storyList(query, last_processed_stories_id=last_processed_stories_id, rows=stories_per_fetch)
     more_stories = len(stories) > 0
     if len(stories) > 0:
@@ -69,3 +71,6 @@ while more_stories:
             " ".join(media_collection_tags)
         ]
         csv_writer.writerow(story_row)
+    page += 1
+
+log.info("Done!")
