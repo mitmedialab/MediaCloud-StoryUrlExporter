@@ -5,3 +5,4 @@ settings.config
 *.log
 output/*.txt
 output/*.zip
+/.env

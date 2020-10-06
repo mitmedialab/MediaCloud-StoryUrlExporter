@@ -1,8 +1,0 @@
-
-[mediacloud]
-key = MY_KEY
-stories_per_fetch = 100
-
-[export]
-query = (media_id:1) AND (publish_date:[2016-01-01T00:00:00Z TO 2016-01-02T00:00:00Z])
-filename = nyt_one_day

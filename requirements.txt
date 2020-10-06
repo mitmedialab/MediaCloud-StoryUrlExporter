@@ -1,2 +1,2 @@
-mediacloud
-unicodecsv
+mediacloud==3.12.x
+python-dotenv==0.10.x
